@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Airways — Album Foto Nuntă</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --navy: #0a1628;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f4ed;
+    --cream-dark: #ede7d9;
+    --white: #ffffff;
+    --gray: #8a8a8a;
+    --border: rgba(201,168,76,0.3);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--navy);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .header-airline {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--gold);
+    line-height: 1.1;
+  }
+
+  .header-subtitle {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--cream-dark);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+  }
+
+  .header-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem auto;
+    max-width: 300px;
+  }
+
+  .header-divider::before,
+  .header-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .plane-icon {
+    color: var(--gold);
+    font-size: 16px;
+  }
+
+  .flight-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  .flight-info span { color: var(--gold-light); }
+
+  /* NAV TABS */
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-btn {
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    color: var(--gray);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .nav-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  .nav-btn:hover { color: var(--gold-light); }
+
+  /* SECTIONS */
+  .section { display: none; padding: 2rem; max-width: 900px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  /* BOARDING PASS CARD */
+  .boarding-card {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 2rem;
+    color: var(--navy);
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .boarding-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  }
+
+  .boarding-card-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+  }
+
+  .boarding-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .boarding-card-sub {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+  }
+
+  /* FORM */
+  .form-group { margin-bottom: 1.2rem; }
+
+  .form-label {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--white);
+    border: 1px solid rgba(10,22,40,0.15);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--navy);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus { border-color: var(--gold); }
+
+  /* DROP ZONE */
+  .drop-zone {
+    border: 2px dashed rgba(10,22,40,0.2);
+    border-radius: 8px;
+    padding: 2.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: rgba(10,22,40,0.02);
+  }
+
+  .drop-zone:hover, .drop-zone.drag-over {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .drop-zone-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--gold);
+  }
+
+  .drop-zone-text {
+    font-size: 14px;
+    color: var(--navy);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .drop-zone-sub {
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  /* PREVIEW GRID */
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 8px;
+    margin-top: 1rem;
+  }
+
+  .preview-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .preview-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  .preview-remove {
+    position: absolute;
+    top: 4px; right: 4px;
+    width: 20px; height: 20px;
+    background: rgba(0,0,0,0.6);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+
+  /* BUTTON */
+  .btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background: var(--navy);
+    border: none;
+    border-radius: 8px;
+    color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: 1rem;
+  }
+
+  .btn-primary:hover { background: #1a2d4a; }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* PROGRESS */
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(10,22,40,0.1);
+    border-radius: 2px;
+    margin-top: 1rem;
+    overflow: hidden;
+    display: none;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: width 0.3s;
+    width: 0%;
+  }
+
+  .status-msg {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 0.75rem;
+    min-height: 20px;
+    color: var(--navy);
+  }
+
+  .status-msg.success { color: #2d7a3a; }
+  .status-msg.error { color: #c0392b; }
+
+  /* GALLERY */
+  .gallery-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--gold);
+  }
+
+  .gallery-count {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+
+  .refresh-btn {
+    padding: 0.5rem 1rem;
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+
+  .refresh-btn:hover { background: rgba(201,168,76,0.1); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .gallery-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .gallery-item:hover { transform: translateY(-2px); }
+
+  .gallery-img-wrap {
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .gallery-img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .gallery-img-wrap:hover img { transform: scale(1.05); }
+
+  .gallery-item-info {
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .gallery-item-name {
+    font-size: 13px;
+    color: var(--cream-dark);
+    font-weight: 500;
+  }
+
+  .gallery-item-time {
+    font-size: 11px;
+    color: var(--gray);
+  }
+
+  .delete-btn {
+    background: none;
+    border: none;
+    color: var(--gray);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 4px;
+    transition: color 0.2s;
+    display: none;
+  }
+
+  .delete-btn:hover { color: #e74c3c; }
+  .delete-btn.visible { display: block; }
+
+  .gallery-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: var(--gray);
+    font-size: 14px;
+  }
+
+  .gallery-loading {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1rem; right: 1rem;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .lightbox-name {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.6);
+    color: var(--gold);
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: rgba(201,168,76,0.1);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 0;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 20s linear infinite;
+  }
+
+  .ticker-text {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    padding: 0 3rem;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .section { padding: 1rem; }
+    .nav-btn { padding: 0.75rem 1rem; font-size: 10px; letter-spacing: 1px; }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .flight-info { gap: 1rem; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-airline">✈ Love Airways · Flight DL&TH-23.08</div>
+  <div class="header-title">Album Foto</div>
+  <div class="header-subtitle">Dalia & Theodor · 23 August 2026</div>
+  <div class="header-divider"><span class="plane-icon">✦</span></div>
+  <div class="flight-info">
+    <div>GATE <span>MOONFIELDS</span></div>
+    <div>DEST <span>FERICIRE</span></div>
+    <div>CLASA <span>AMINTIRI</span></div>
+  </div>
+</div>
+
+<div class="ticker">
+  <span class="ticker-inner">
+    <span class="ticker-text">✦ Bun venit la bordul albumului nostru foto ✦ Încarcă momentele tale preferate ✦ Fiecare fotografie este un bilet spre amintire ✦ Love Airways · DL&TH-23.08 ✦ Mulțumim că zburați cu noi ✦</span>
+  </span>
+</div>
+
+<div class="nav">
+  <button class="nav-btn active" onclick="showTab('upload')">✈ Încarcă</button>
+  <button class="nav-btn" onclick="showTab('gallery')">◈ Galerie</button>
+</div>
+
+<!-- UPLOAD SECTION -->
+<div class="section active" id="tab-upload">
+  <div class="boarding-card">
+    <div class="boarding-card-label">Boarding Pass · Pasager</div>
+    <div class="boarding-card-title">Încarcă amintirile tale</div>
+    <div class="boarding-card-sub">Maximum 10 fotografii per pasager</div>
+
+    <div class="form-group">
+      <label class="form-label">Numele tău complet</label>
+      <input type="text" class="form-input" id="user-name" placeholder="ex. Maria Ionescu" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Fotografii (max. 10)</label>
+      <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+        <div class="drop-zone-icon">📷</div>
+        <div class="drop-zone-text">Apasă sau trage fotografiile aici</div>
+        <div class="drop-zone-sub">JPG, PNG, WEBP · Max 10MB per foto</div>
+      </div>
+      <input type="file" id="file-input" multiple accept="image/*" style="display:none">
+      <div class="preview-grid" id="preview-grid"></div>
+    </div>
+
+    <button class="btn-primary" id="upload-btn" onclick="startUpload()">
+      ✈ Îmbarcare · Trimite fotografiile
+    </button>
+
+    <div class="progress-bar" id="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+</div>
+
+<!-- GALLERY SECTION -->
+<div class="section" id="tab-gallery">
+  <div class="gallery-header">
+    <div>
+      <div class="gallery-title">Galerie</div>
+      <div class="gallery-count" id="gallery-count">Se încarcă...</div>
+    </div>
+    <button class="refresh-btn" onclick="loadGallery()">↻ Refresh</button>
+  </div>
+
+  <div class="gallery-grid" id="gallery-grid">
+    <div class="gallery-loading">Se încarcă fotografiile...</div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-name" id="lightbox-name"></div>
+</div>
+
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcWiuZbhFn8ZKyIqVXcJ-LEEy3685Xm136naSTmhsUwcjrqkyLXeKXtK74D2NncDsa/exec';
+let selectedFiles = [];
+let currentUserName = '';
+
+function showTab(tab) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+  if (tab === 'gallery') loadGallery();
+}
+
+const dropZone = document.getElementById('drop-zone');
+const fileInput = document.getElementById('file-input');
+const previewGrid = document.getElementById('preview-grid');
+
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault();
+  dropZone.classList.remove('drag-over');
+  addFiles(Array.from(e.dataTransfer.files));
+});
+fileInput.addEventListener('change', () => addFiles(Array.from(fileInput.files)));
+
+function addFiles(files) {
+  const imageFiles = files.filter(f => f.type.startsWith('image/'));
+  const remaining = 10 - selectedFiles.length;
+  const toAdd = imageFiles.slice(0, remaining);
+  selectedFiles = [...selectedFiles, ...toAdd];
+  renderPreviews();
+}
+
+function renderPreviews() {
+  previewGrid.innerHTML = '';
+  selectedFiles.forEach((file, i) => {
+    const url = URL.createObjectURL(file);
+    const div = document.createElement('div');
+    div.className = 'preview-item';
+    div.innerHTML = `<img src="${url}" alt=""><button class="preview-remove" onclick="removeFile(${i})">✕</button>`;
+    previewGrid.appendChild(div);
+  });
+}
+
+function removeFile(i) {
+  selectedFiles.splice(i, 1);
+  renderPreviews();
+}
+
+async function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+}
+
+async function startUpload() {
+  const name = document.getElementById('user-name').value.trim();
+  if (!name) return setStatus('Te rugăm să introduci numele tău.', 'error');
+  if (selectedFiles.length === 0) return setStatus('Selectează cel puțin o fotografie.', 'error');
+
+  currentUserName = name;
+  const btn = document.getElementById('upload-btn');
+  btn.disabled = true;
+  const progressBar = document.getElementById('progress-bar');
+  const progressFill = document.getElementById('progress-fill');
+  progressBar.style.display = 'block';
+  progressFill.style.width = '0%';
+
+  let uploaded = 0;
+  let errors = 0;
+
+  for (let i = 0; i < selectedFiles.length; i++) {
+    const file = selectedFiles[i];
+    setStatus(`Se trimite ${i + 1} din ${selectedFiles.length}...`, '');
+    try {
+      const base64Data = await fileToBase64(file);
+      const payload = {
+        action: 'upload',
+        userName: name,
+        fileName: file.name,
+        mimeType: file.type,
+        base64Data: base64Data
+      };
+
+      const resp = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
+      });
+      const data = await resp.json();
+      if (data.success) {
+        uploaded++;
+      } else {
+        errors++;
+        if (data.error && data.error.includes('limita')) {
+          setStatus(data.error, 'error');
+          break;
+        }
+      }
+    } catch (err) {
+      errors++;
+    }
+    progressFill.style.width = ((i + 1) / selectedFiles.length * 100) + '%';
+  }
+
+  btn.disabled = false;
+  if (uploaded > 0) {
+    setStatus(`✓ ${uploaded} fotografie${uploaded > 1 ? 'i' : ''} încărcate cu succes! Mulțumim, ${name}!`, 'success');
+    selectedFiles = [];
+    renderPreviews();
+    document.getElementById('user-name').value = '';
+  } else {
+    setStatus('A apărut o eroare. Încearcă din nou.', 'error');
+  }
+}
+
+function setStatus(msg, type) {
+  const el = document.getElementById('status-msg');
+  el.textContent = msg;
+  el.className = 'status-msg ' + type;
+}
+
+async function loadGallery() {
+  const grid = document.getElementById('gallery-grid');
+  const count = document.getElementById('gallery-count');
+  grid.innerHTML = '<div class="gallery-loading">↻ Se încarcă fotografiile...</div>';
+  count.textContent = '';
+
+  try {
+    const resp = await fetch(APPS_SCRIPT_URL + '?action=list');
+    const data = await resp.json();
+
+    if (!data.success || !data.photos.length) {
+      grid.innerHTML = '<div class="gallery-empty">Nu există fotografii încă. Fii primul care încarcă!</div>';
+      count.textContent = '0 fotografii';
+      return;
+    }
+
+    count.textContent = data.photos.length + ' fotografi' + (data.photos.length === 1 ? 'e' : 'i');
+    grid.innerHTML = '';
+
+    const storedName = document.getElementById('user-name')?.value?.trim() || '';
+
+    data.photos.forEach(photo => {
+      const date = new Date(photo.timestamp);
+      const timeStr = date.toLocaleTimeString('ro-RO', { hour: '2-digit', minute: '2-digit' });
+      const isOwner = storedName && storedName.toLowerCase() === photo.userName.toLowerCase();
+
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      item.innerHTML = `
+        <div class="gallery-img-wrap" onclick="openLightbox('${photo.url}', '${escHtml(photo.userName)}')">
+          <img src="${photo.url}" alt="Foto de ${escHtml(photo.userName)}" loading="lazy">
+        </div>
+        <div class="gallery-item-info">
+          <div>
+            <div class="gallery-item-name">${escHtml(photo.userName)}</div>
+            <div class="gallery-item-time">${timeStr}</div>
+          </div>
+          <button class="delete-btn ${isOwner ? 'visible' : ''}" onclick="deletePhoto('${photo.fileId}', '${escHtml(photo.userName)}', this)" title="Șterge">🗑</button>
+        </div>
+      `;
+      grid.appendChild(item);
+    });
+  } catch (err) {
+    grid.innerHTML = '<div class="gallery-empty">Eroare la încărcare. Verifică conexiunea.</div>';
+  }
+}
+
+async function deletePhoto(fileId, userName, btn) {
+  if (!confirm('Ești sigur că vrei să ștergi această fotografie?')) return;
+
+  const storedName = document.getElementById('user-name')?.value?.trim() || '';
+  if (!storedName) return alert('Introdu mai întâi numele tău în secțiunea de upload.');
+
+  btn.disabled = true;
+  btn.textContent = '...';
+
+  try {
+    const resp = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'delete', fileId, userName: storedName })
+    });
+    const data = await resp.json();
+    if (data.success) {
+      loadGallery();
+    } else {
+      alert(data.error || 'Eroare la ștergere.');
+      btn.disabled = false;
+      btn.textContent = '🗑';
+    }
+  } catch (err) {
+    alert('Eroare la ștergere.');
+    btn.disabled = false;
+    btn.textContent = '🗑';
+  }
+}
+
+function openLightbox(url, name) {
+  document.getElementById('lightbox-img').src = url;
+  document.getElementById('lightbox-name').textContent = name;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+function escHtml(str) {
+  return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
