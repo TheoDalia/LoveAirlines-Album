@@ -42,18 +42,9 @@ body {
   50% { transform: translateY(-6px); }
 }
 
-/* FLOATING EMOJIS */
-.floaters {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
+.floaters { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .floater {
-  position: absolute;
-  font-size: 1.5rem;
-  opacity: 0.18;
+  position: absolute; font-size: 1.5rem; opacity: 0.18;
   animation: floatUp linear infinite;
 }
 @keyframes floatUp {
@@ -65,139 +56,60 @@ body {
 
 /* NAVBAR */
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  position: sticky; top: 0; z-index: 100;
   background: var(--green-dark);
   border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
+  display: flex; align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.5rem;
 }
 .nav-logo {
   font-family: 'Playfair Display', serif;
-  color: var(--gold);
-  font-size: 1rem;
-  letter-spacing: 2px;
-  white-space: nowrap;
+  color: var(--gold); font-size: 1rem;
+  letter-spacing: 2px; white-space: nowrap;
 }
-.nav-links {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+.lang-switcher {
+  display: flex; gap: 6px; align-items: center;
 }
-.nav-link {
-  padding: 0.4rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  color: var(--gold);
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-family: 'DM Sans', sans-serif;
-  animation: pulse-gold 2s ease-in-out infinite;
-  white-space: nowrap;
+.lang-btn {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0.45;
+  line-height: 1;
 }
-.nav-link:hover { background: rgba(201,168,76,0.15); }
-@keyframes pulse-gold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.4); }
-  50% { box-shadow: 0 0 0 4px rgba(201,168,76,0); }
+.lang-btn:hover { opacity: 0.8; border-color: var(--border); }
+.lang-btn.active {
+  opacity: 1;
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.12);
 }
 
 /* HEADER */
 .header {
-  text-align: center;
-  padding: 3rem 1.5rem 2rem;
-  position: relative;
-  z-index: 1;
+  text-align: center; padding: 3rem 1.5rem 2rem;
+  position: relative; z-index: 1;
   border-bottom: 1px solid var(--border);
 }
-.header-airline {
-  font-size: 10px;
-  letter-spacing: 4px;
-  color: var(--gold);
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
-}
-.header-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  color: var(--gold);
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
-}
-.header-subtitle {
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: var(--cream-dark);
-  text-transform: uppercase;
-  opacity: 0.7;
-  margin-bottom: 1.5rem;
-}
-.flight-info {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--gray);
-  text-transform: uppercase;
-  flex-wrap: wrap;
-}
+.header-airline { font-size: 10px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; }
+.header-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 3.5rem); color: var(--gold); line-height: 1.1; margin-bottom: 0.5rem; }
+.header-subtitle { font-size: 12px; letter-spacing: 3px; color: var(--cream-dark); text-transform: uppercase; opacity: 0.7; margin-bottom: 1.5rem; }
+.flight-info { display: flex; justify-content: center; gap: 1.5rem; font-size: 11px; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; flex-wrap: wrap; }
 .flight-info span { color: var(--gold-light); }
 
 /* TICKER */
-.ticker {
-  background: rgba(201,168,76,0.08);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 0.5rem 0;
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  z-index: 1;
-}
-.ticker-inner {
-  display: inline-block;
-  animation: ticker 25s linear infinite;
-}
-.ticker-text {
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: var(--gold);
-  text-transform: uppercase;
-  padding: 0 3rem;
-}
-@keyframes ticker {
-  from { transform: translateX(100vw); }
-  to { transform: translateX(-100%); }
-}
+.ticker { background: rgba(201,168,76,0.08); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.5rem 0; overflow: hidden; white-space: nowrap; position: relative; z-index: 1; }
+.ticker-inner { display: inline-block; animation: ticker 25s linear infinite; }
+.ticker-text { font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; padding: 0 3rem; }
+@keyframes ticker { from { transform: translateX(100vw); } to { transform: translateX(-100%); } }
 
 /* TAB NAV */
-.tab-nav {
-  display: flex;
-  justify-content: center;
-  background: rgba(0,0,0,0.2);
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  z-index: 1;
-}
-.tab-btn {
-  padding: 1rem 2rem;
-  background: none;
-  border: none;
-  color: var(--gray);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s;
-}
+.tab-nav { display: flex; justify-content: center; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
+.tab-btn { padding: 1rem 2rem; background: none; border: none; color: var(--gray); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; }
 .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
 .tab-btn:hover { color: var(--gold-light); }
 
@@ -206,318 +118,93 @@ body {
 .section.active { display: block; }
 
 /* BOARDING CARD */
-.boarding-card {
-  background: var(--cream);
-  border-radius: 16px;
-  padding: 2rem;
-  color: var(--green);
-  position: relative;
-  overflow: hidden;
-}
-.boarding-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-}
-.boarding-card::after {
-  content: '✈';
-  position: absolute;
-  right: 1.5rem;
-  top: 1.5rem;
-  font-size: 3rem;
-  opacity: 0.06;
-  color: var(--green);
-}
-.boarding-label {
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 1.5rem;
-}
-.boarding-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: var(--green);
-  margin-bottom: 0.4rem;
-}
-.boarding-sub {
-  font-size: 13px;
-  color: var(--gray);
-  margin-bottom: 1.75rem;
-}
+.boarding-card { background: var(--cream); border-radius: 16px; padding: 2rem; color: var(--green); position: relative; overflow: hidden; }
+.boarding-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); }
+.boarding-card::after { content: '✈'; position: absolute; right: 1.5rem; top: 1.5rem; font-size: 3rem; opacity: 0.06; color: var(--green); }
+.boarding-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem; }
+.boarding-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--green); margin-bottom: 0.4rem; }
+.boarding-sub { font-size: 13px; color: var(--gray); margin-bottom: 1.75rem; }
 
-/* FORM */
 .form-group { margin-bottom: 1.25rem; }
-.form-label {
-  display: block;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 0.5rem;
-}
-.form-input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: var(--white);
-  border: 1px solid rgba(26,58,42,0.15);
-  border-radius: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  color: var(--green);
-  outline: none;
-  transition: border-color 0.2s;
-}
+.form-label { display: block; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 0.5rem; }
+.form-input { width: 100%; padding: 0.75rem 1rem; background: var(--white); border: 1px solid rgba(26,58,42,0.15); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--green); outline: none; transition: border-color 0.2s; }
 .form-input:focus { border-color: var(--gold); }
 
-/* DROP ZONE */
-.drop-zone {
-  border: 2px dashed rgba(26,58,42,0.2);
-  border-radius: 10px;
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: rgba(26,58,42,0.03);
-}
-.drop-zone:hover, .drop-zone.drag-over {
-  border-color: var(--gold);
-  background: rgba(201,168,76,0.05);
-}
+.drop-zone { border: 2px dashed rgba(26,58,42,0.2); border-radius: 10px; padding: 2.5rem 1.5rem; text-align: center; cursor: pointer; transition: all 0.2s; background: rgba(26,58,42,0.03); }
+.drop-zone:hover, .drop-zone.drag-over { border-color: var(--gold); background: rgba(201,168,76,0.05); }
 .drop-zone-icon { font-size: 2rem; margin-bottom: 0.75rem; }
 .drop-zone-text { font-size: 14px; color: var(--green); font-weight: 500; margin-bottom: 0.25rem; }
 .drop-zone-sub { font-size: 12px; color: var(--gray); }
 
-/* PREVIEW */
-.preview-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 8px;
-  margin-top: 1rem;
-}
+.preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 8px; margin-top: 1rem; }
 .preview-item { position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden; }
 .preview-item img { width: 100%; height: 100%; object-fit: cover; }
-.preview-remove {
-  position: absolute; top: 4px; right: 4px;
-  width: 20px; height: 20px;
-  background: rgba(0,0,0,0.65);
-  border: none; border-radius: 50%;
-  color: white; font-size: 11px;
-  cursor: pointer; display: flex;
-  align-items: center; justify-content: center;
-}
+.preview-remove { position: absolute; top: 4px; right: 4px; width: 20px; height: 20px; background: rgba(0,0,0,0.65); border: none; border-radius: 50%; color: white; font-size: 11px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
 
-/* BUTTON */
-.btn-primary {
-  width: 100%;
-  padding: 1rem;
-  background: var(--green);
-  border: 1px solid var(--gold);
-  border-radius: 10px;
-  color: var(--gold);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.2s;
-  margin-top: 1rem;
-}
+.btn-primary { width: 100%; padding: 1rem; background: var(--green); border: 1px solid var(--gold); border-radius: 10px; color: var(--gold); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; margin-top: 1rem; }
 .btn-primary:hover { background: var(--green-light); }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* PROGRESS */
-.progress-bar {
-  width: 100%;
-  height: 4px;
-  background: rgba(26,58,42,0.1);
-  border-radius: 2px;
-  margin-top: 1rem;
-  overflow: hidden;
-  display: none;
-}
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
-  border-radius: 2px;
-  transition: width 0.3s;
-  width: 0%;
-}
-.status-msg {
-  text-align: center;
-  font-size: 13px;
-  margin-top: 0.75rem;
-  min-height: 20px;
-  color: var(--green);
-}
+.progress-bar { width: 100%; height: 4px; background: rgba(26,58,42,0.1); border-radius: 2px; margin-top: 1rem; overflow: hidden; display: none; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 2px; transition: width 0.3s; width: 0%; }
+.status-msg { text-align: center; font-size: 13px; margin-top: 0.75rem; min-height: 20px; color: var(--green); }
 .status-msg.success { color: #2d7a3a; font-weight: 500; }
 .status-msg.error { color: #c0392b; }
 
-/* GALLERY */
-.gallery-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-.gallery-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.75rem;
-  color: var(--gold);
-}
-.gallery-count {
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: var(--gray);
-  text-transform: uppercase;
-  margin-top: 0.25rem;
-}
-.refresh-btn {
-  padding: 0.5rem 1.25rem;
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  color: var(--gold);
-  font-size: 12px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  transition: all 0.2s;
-}
+.gallery-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.gallery-title { font-family: 'Playfair Display', serif; font-size: 1.75rem; color: var(--gold); }
+.gallery-count { font-size: 11px; letter-spacing: 2px; color: var(--gray); text-transform: uppercase; margin-top: 0.25rem; }
+.refresh-btn { padding: 0.5rem 1.25rem; background: none; border: 1px solid var(--border); border-radius: 20px; color: var(--gold); font-size: 12px; letter-spacing: 1px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
 .refresh-btn:hover { background: rgba(201,168,76,0.1); }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 14px;
-}
-.gallery-item {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.gallery-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-}
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.gallery-item { background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+.gallery-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
 .gallery-img-wrap { aspect-ratio: 1; overflow: hidden; cursor: pointer; }
-.gallery-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s;
-}
+.gallery-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
 .gallery-img-wrap:hover img { transform: scale(1.06); }
-.gallery-item-info {
-  padding: 0.75rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+.gallery-item-info { padding: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
 .gallery-item-name { font-size: 13px; color: var(--cream-dark); font-weight: 500; }
 .gallery-item-time { font-size: 11px; color: var(--gray); margin-top: 2px; }
-.delete-btn {
-  background: none; border: none;
-  color: var(--gray); cursor: pointer;
-  font-size: 14px; padding: 4px;
-  border-radius: 4px;
-  transition: color 0.2s;
-  display: none;
-}
+.delete-btn { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 14px; padding: 4px; border-radius: 4px; transition: color 0.2s; display: none; }
 .delete-btn:hover { color: #e74c3c; }
 .delete-btn.visible { display: block; }
 
-.gallery-empty, .gallery-loading {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 3rem;
-  color: var(--gray);
-  font-size: 14px;
-  letter-spacing: 1px;
-}
+.gallery-empty, .gallery-loading { grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--gray); font-size: 14px; letter-spacing: 1px; }
 .gallery-loading { color: var(--gold); }
 
-/* LIGHTBOX */
-.lightbox {
-  display: none;
-  position: fixed; inset: 0;
-  background: rgba(0,0,0,0.93);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-}
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.93); z-index: 1000; align-items: center; justify-content: center; padding: 1rem; }
 .lightbox.open { display: flex; }
-.lightbox img {
-  max-width: 90vw; max-height: 85vh;
-  object-fit: contain; border-radius: 10px;
-  border: 1px solid var(--border);
-}
-.lightbox-close {
-  position: fixed; top: 1rem; right: 1rem;
-  background: rgba(255,255,255,0.1);
-  border: none; color: white;
-  width: 42px; height: 42px;
-  border-radius: 50%; font-size: 18px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-}
-.lightbox-name {
-  position: fixed; bottom: 1.5rem;
-  left: 50%; transform: translateX(-50%);
-  background: rgba(26,58,42,0.85);
-  color: var(--gold);
-  padding: 0.5rem 1.5rem;
-  border-radius: 20px;
-  font-size: 13px; letter-spacing: 1px;
-  border: 1px solid var(--border);
-  white-space: nowrap;
-}
-
-/* STAMPS */
-.stamp {
-  display: inline-block;
-  border: 2px solid var(--border);
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--gold);
-  text-transform: uppercase;
-  opacity: 0.5;
-  margin: 0 4px;
-}
+.lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 10px; border: 1px solid var(--border); }
+.lightbox-close { position: fixed; top: 1rem; right: 1rem; background: rgba(255,255,255,0.1); border: none; color: white; width: 42px; height: 42px; border-radius: 50%; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.lightbox-name { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); background: rgba(26,58,42,0.85); color: var(--gold); padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 13px; letter-spacing: 1px; border: 1px solid var(--border); white-space: nowrap; }
 
 @media (max-width: 600px) {
   .section { padding: 1.25rem 1rem; }
-  .nav-links { gap: 0.35rem; }
-  .nav-link { padding: 0.35rem 0.6rem; font-size: 9px; letter-spacing: 1px; }
   .tab-btn { padding: 0.75rem 1rem; font-size: 10px; }
   .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-  .flight-info { gap: 1rem; }
   .boarding-card { padding: 1.5rem; }
+  .lang-btn { font-size: 16px; padding: 3px 6px; }
 }
 </style>
 </head>
 <body>
 
-<!-- FLOATING EMOJIS -->
 <div class="floaters" id="floaters"></div>
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div style="width:100%;text-align:center;">
-    <div class="nav-logo">🧳 &nbsp; D &amp; T &nbsp; 🧳</div>
+  <div class="nav-logo">🧳 &nbsp; D &amp; T &nbsp; 🧳</div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('ro')" title="Română">🇷🇴</button>
+    <button class="lang-btn" onclick="setLang('it')" title="Italiano">🇮🇹</button>
+    <button class="lang-btn" onclick="setLang('en')" title="English">🇺🇸</button>
   </div>
 </nav>
 
 <!-- HEADER -->
 <div class="header">
-  <div class="header-airline">✈ Love Airlines · Zbor DL&TH-23.08</div>
+  <div class="header-airline" id="t-airline">✈ Love Airlines · Zbor DL&TH-23.08</div>
   <div class="header-title">Album Foto</div>
   <div class="header-subtitle">Dalia &amp; Theo · 23 August 2026</div>
   <div style="position:relative; height:70px; margin: 1rem 0;">
@@ -530,54 +217,49 @@ body {
     <span style="position:absolute;right:0%;top:38px;font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;opacity:0.38;border:1px solid rgba(201,168,76,0.3);padding:2px 8px;border-radius:3px;animation:floatCity 7.5s ease-in-out infinite 3s;">Venezia</span>
   </div>
   <div class="flight-info">
-    <div>POARTĂ <span>MOONFIELDS</span></div>
-    <div>DESTINAȚIE <span>FERICIRE</span></div>
-    <div>CLASA <span>AMINTIRI</span></div>
+    <div id="t-gate-label">POARTĂ <span>MOONFIELDS</span></div>
+    <div id="t-dest-label">DESTINAȚIE <span>FERICIRE</span></div>
+    <div id="t-class-label">CLASA <span>AMINTIRI</span></div>
   </div>
 </div>
 
 <!-- TICKER -->
 <div class="ticker">
   <span class="ticker-inner">
-    <span class="ticker-text">🧳 Bun venit la bordul albumului nostru foto 🛩️ Încarcă momentele tale preferate 🚂 Fiecare fotografie este un bilet spre amintire 🛵 Love Airlines · DL&TH-23.08 ✦ Mulțumim că zburați cu noi 🧳</span>
+    <span class="ticker-text" id="t-ticker">🧳 Bun venit la bordul albumului nostru foto 🛩️ Încarcă momentele tale preferate 🚂 Fiecare fotografie este un bilet spre amintire 🛵 Love Airlines · DL&TH-23.08 ✦ Mulțumim că zburați cu noi 🧳</span>
   </span>
 </div>
 
 <!-- TAB NAV -->
 <div class="tab-nav">
-  <button class="tab-btn active" onclick="showTab('upload', this)">✈ Încarcă foto</button>
-  <button class="tab-btn" onclick="showTab('gallery', this)">◈ Galerie</button>
+  <button class="tab-btn active" id="tab-upload-btn" onclick="showTab('upload', this)">✈ <span id="t-tab-upload">Încarcă foto</span></button>
+  <button class="tab-btn" id="tab-gallery-btn" onclick="showTab('gallery', this)">◈ <span id="t-tab-gallery">Galerie</span></button>
 </div>
 
 <!-- UPLOAD -->
 <div class="section active" id="tab-upload">
   <div class="boarding-card">
-    <div class="boarding-label">Boarding Pass · Pasager</div>
-    <div class="boarding-title">Încarcă amintirile tale</div>
-    <div class="boarding-sub">Maximum 10 fotografii per pasager · Ajută-ne să completăm albumul</div>
-
+    <div class="boarding-label" id="t-bp-label">Boarding Pass · Pasager</div>
+    <div class="boarding-title" id="t-bp-title">Încarcă amintirile tale</div>
+    <div class="boarding-sub" id="t-bp-sub">Maximum 10 fotografii per pasager · Ajută-ne să completăm albumul</div>
     <div class="form-group">
-      <label class="form-label">Numele tău complet</label>
+      <label class="form-label" id="t-name-label">Numele tău complet</label>
       <input type="text" class="form-input" id="user-name" placeholder="ex. Maria Ionescu">
     </div>
-
     <div class="form-group">
-      <label class="form-label">Fotografii (max. 10)</label>
+      <label class="form-label" id="t-photos-label">Fotografii (max. 10)</label>
       <div class="drop-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
         <div class="drop-zone-icon">📷</div>
-        <div class="drop-zone-text">Apasă sau trage fotografiile aici</div>
-        <div class="drop-zone-sub">JPG, PNG, WEBP · Max 10MB per fotografie</div>
+        <div class="drop-zone-text" id="t-drop-text">Apasă sau trage fotografiile aici</div>
+        <div class="drop-zone-sub" id="t-drop-sub">JPG, PNG, WEBP · Max 10MB per fotografie</div>
       </div>
       <input type="file" id="file-input" multiple accept="image/*" style="display:none">
       <div class="preview-grid" id="preview-grid"></div>
     </div>
-
     <button class="btn-primary" id="upload-btn" onclick="startUpload()">
-      ✈ Îmbarcare · Trimite fotografiile
+      ✈ <span id="t-upload-btn">Îmbarcare · Trimite fotografiile</span>
     </button>
-    <div class="progress-bar" id="progress-bar">
-      <div class="progress-fill" id="progress-fill"></div>
-    </div>
+    <div class="progress-bar" id="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     <div class="status-msg" id="status-msg"></div>
   </div>
 </div>
@@ -586,13 +268,13 @@ body {
 <div class="section" id="tab-gallery">
   <div class="gallery-header">
     <div>
-      <div class="gallery-title">Galerie</div>
-      <div class="gallery-count" id="gallery-count">Se încarcă...</div>
+      <div class="gallery-title" id="t-gallery-title">Galerie</div>
+      <div class="gallery-count" id="gallery-count"></div>
     </div>
-    <button class="refresh-btn" onclick="loadGallery()">↻ Refresh</button>
+    <button class="refresh-btn" onclick="loadGallery()">↻ <span id="t-refresh">Refresh</span></button>
   </div>
   <div class="gallery-grid" id="gallery-grid">
-    <div class="gallery-loading">↻ Se încarcă fotografiile...</div>
+    <div class="gallery-loading" id="t-loading">↻ Se încarcă fotografiile...</div>
   </div>
 </div>
 
@@ -606,18 +288,150 @@ body {
 <script>
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcWiuZbhFn8ZKyIqVXcJ-LEEy3685Xm136naSTmhsUwcjrqkyLXeKXtK74D2NncDsa/exec';
 let selectedFiles = [];
+let currentLang = 'ro';
+
+// TRANSLATIONS
+const i18n = {
+  ro: {
+    airline: '✈ Love Airlines · Zbor DL&TH-23.08',
+    gate: 'POARTĂ', dest: 'DESTINAȚIE', cls: 'CLASA',
+    gateVal: 'MOONFIELDS', destVal: 'FERICIRE', clsVal: 'AMINTIRI',
+    ticker: '🧳 Bun venit la bordul albumului nostru foto 🛩️ Încarcă momentele tale preferate 🚂 Fiecare fotografie este un bilet spre amintire 🛵 Love Airlines · DL&TH-23.08 ✦ Mulțumim că zburați cu noi 🧳',
+    tabUpload: 'Încarcă foto', tabGallery: 'Galerie',
+    bpLabel: 'Boarding Pass · Pasager',
+    bpTitle: 'Încarcă amintirile tale',
+    bpSub: 'Maximum 10 fotografii per pasager · Ajută-ne să completăm albumul',
+    nameLabel: 'Numele tău complet',
+    namePlaceholder: 'ex. Maria Ionescu',
+    photosLabel: 'Fotografii (max. 10)',
+    dropText: 'Apasă sau trage fotografiile aici',
+    dropSub: 'JPG, PNG, WEBP · Max 10MB per fotografie',
+    uploadBtn: 'Îmbarcare · Trimite fotografiile',
+    galleryTitle: 'Galerie',
+    refresh: 'Refresh',
+    loading: '↻ Se încarcă fotografiile...',
+    empty: 'Nu există fotografii încă. Fii primul care încarcă! 📷',
+    errName: 'Te rugăm să introduci numele tău.',
+    errPhoto: 'Selectează cel puțin o fotografie.',
+    sending: 'Se trimite',
+    of: 'din',
+    successMsg: (n, name) => `✓ ${n} fotografie${n > 1 ? 'i' : ''} încărcate! Mulțumim, ${name}! 🧳`,
+    errLimit: 'Ai atins limita de fotografii.',
+    errGeneral: 'A apărut o eroare. Încearcă din nou.',
+    confirmDelete: 'Ești sigur că vrei să ștergi această fotografie?',
+    errNoName: 'Introdu mai întâi numele tău în secțiunea de upload.',
+    errDelete: 'Eroare la ștergere.',
+    errLoad: 'Eroare la încărcare. Verifică conexiunea.',
+    photos: (n) => n + ' fotografi' + (n === 1 ? 'e' : 'i'),
+  },
+  it: {
+    airline: '✈ Love Airlines · Volo DL&TH-23.08',
+    gate: 'PORTA', dest: 'DESTINAZIONE', cls: 'CLASSE',
+    gateVal: 'MOONFIELDS', destVal: 'FELICITÀ', clsVal: 'RICORDI',
+    ticker: '🧳 Benvenuti a bordo del nostro album foto 🛩️ Carica i tuoi momenti preferiti 🚂 Ogni foto è un biglietto verso il ricordo 🛵 Love Airlines · DL&TH-23.08 ✦ Grazie per volare con noi 🧳',
+    tabUpload: 'Carica foto', tabGallery: 'Galleria',
+    bpLabel: 'Carta d\'imbarco · Passeggero',
+    bpTitle: 'Carica i tuoi ricordi',
+    bpSub: 'Massimo 10 foto per passeggero · Aiutaci a completare l\'album',
+    nameLabel: 'Il tuo nome completo',
+    namePlaceholder: 'es. Maria Rossi',
+    photosLabel: 'Fotografie (max. 10)',
+    dropText: 'Clicca o trascina le foto qui',
+    dropSub: 'JPG, PNG, WEBP · Max 10MB per foto',
+    uploadBtn: 'Imbarco · Invia le fotografie',
+    galleryTitle: 'Galleria',
+    refresh: 'Aggiorna',
+    loading: '↻ Caricamento fotografie...',
+    empty: 'Nessuna foto ancora. Sii il primo a caricare! 📷',
+    errName: 'Inserisci il tuo nome.',
+    errPhoto: 'Seleziona almeno una foto.',
+    sending: 'Invio',
+    of: 'di',
+    successMsg: (n, name) => `✓ ${n} foto caricate! Grazie, ${name}! 🧳`,
+    errLimit: 'Hai raggiunto il limite di foto.',
+    errGeneral: 'Si è verificato un errore. Riprova.',
+    confirmDelete: 'Sei sicuro di voler eliminare questa foto?',
+    errNoName: 'Inserisci prima il tuo nome nella sezione di caricamento.',
+    errDelete: 'Errore durante l\'eliminazione.',
+    errLoad: 'Errore di caricamento. Controlla la connessione.',
+    photos: (n) => n + ' foto',
+  },
+  en: {
+    airline: '✈ Love Airlines · Flight DL&TH-23.08',
+    gate: 'GATE', dest: 'DESTINATION', cls: 'CLASS',
+    gateVal: 'MOONFIELDS', destVal: 'HAPPINESS', clsVal: 'MEMORIES',
+    ticker: '🧳 Welcome aboard our photo album 🛩️ Upload your favourite moments 🚂 Every photo is a ticket to a memory 🛵 Love Airlines · DL&TH-23.08 ✦ Thank you for flying with us 🧳',
+    tabUpload: 'Upload photos', tabGallery: 'Gallery',
+    bpLabel: 'Boarding Pass · Passenger',
+    bpTitle: 'Upload your memories',
+    bpSub: 'Maximum 10 photos per passenger · Help us complete the album',
+    nameLabel: 'Your full name',
+    namePlaceholder: 'e.g. John Smith',
+    photosLabel: 'Photos (max. 10)',
+    dropText: 'Click or drag photos here',
+    dropSub: 'JPG, PNG, WEBP · Max 10MB per photo',
+    uploadBtn: 'Boarding · Send your photos',
+    galleryTitle: 'Gallery',
+    refresh: 'Refresh',
+    loading: '↻ Loading photos...',
+    empty: 'No photos yet. Be the first to upload! 📷',
+    errName: 'Please enter your name.',
+    errPhoto: 'Please select at least one photo.',
+    sending: 'Sending',
+    of: 'of',
+    successMsg: (n, name) => `✓ ${n} photo${n > 1 ? 's' : ''} uploaded! Thank you, ${name}! 🧳`,
+    errLimit: 'You have reached the photo limit.',
+    errGeneral: 'An error occurred. Please try again.',
+    confirmDelete: 'Are you sure you want to delete this photo?',
+    errNoName: 'Please enter your name in the upload section first.',
+    errDelete: 'Error deleting photo.',
+    errLoad: 'Loading error. Check your connection.',
+    photos: (n) => n + ' photo' + (n !== 1 ? 's' : ''),
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  const t = i18n[lang];
+  document.documentElement.lang = lang;
+
+  document.getElementById('t-airline').textContent = t.airline;
+  document.getElementById('t-gate-label').innerHTML = t.gate + ' <span>' + t.gateVal + '</span>';
+  document.getElementById('t-dest-label').innerHTML = t.dest + ' <span>' + t.destVal + '</span>';
+  document.getElementById('t-class-label').innerHTML = t.cls + ' <span>' + t.clsVal + '</span>';
+  document.getElementById('t-ticker').textContent = t.ticker;
+  document.getElementById('t-tab-upload').textContent = t.tabUpload;
+  document.getElementById('t-tab-gallery').textContent = t.tabGallery;
+  document.getElementById('t-bp-label').textContent = t.bpLabel;
+  document.getElementById('t-bp-title').textContent = t.bpTitle;
+  document.getElementById('t-bp-sub').textContent = t.bpSub;
+  document.getElementById('t-name-label').textContent = t.nameLabel;
+  document.getElementById('user-name').placeholder = t.namePlaceholder;
+  document.getElementById('t-photos-label').textContent = t.photosLabel;
+  document.getElementById('t-drop-text').textContent = t.dropText;
+  document.getElementById('t-drop-sub').textContent = t.dropSub;
+  document.getElementById('t-upload-btn').textContent = t.uploadBtn;
+  document.getElementById('t-gallery-title').textContent = t.galleryTitle;
+  document.getElementById('t-refresh').textContent = t.refresh;
+
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  const gc = document.getElementById('gallery-count');
+  if (gc.textContent) loadGallery();
+}
 
 // FLOATERS
-const emojis = ['🧳','🚂','🛩️','🛵','✈️','🌿','💛','🎊'];
+const emojis = ['🧳','🚂','🛩️','🛵','🧳','🛩️','🚂','🛵'];
 const floatersEl = document.getElementById('floaters');
-for (let i = 0; i < 18; i++) {
+for (let i = 0; i < 24; i++) {
   const el = document.createElement('div');
   el.className = 'floater';
-  el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-  el.style.left = Math.random() * 100 + 'vw';
-  el.style.animationDuration = (12 + Math.random() * 16) + 's';
-  el.style.animationDelay = (Math.random() * 20) + 's';
-  el.style.fontSize = (1 + Math.random()) + 'rem';
+  el.textContent = emojis[i % emojis.length];
+  el.style.left = (Math.random() * 98) + 'vw';
+  el.style.animationDuration = (10 + Math.random() * 12) + 's';
+  el.style.animationDelay = (Math.random() * 6) + 's';
+  el.style.fontSize = (1.2 + Math.random() * 0.8) + 'rem';
   floatersEl.appendChild(el);
 }
 
@@ -668,9 +482,10 @@ async function fileToBase64(file) {
 }
 
 async function startUpload() {
+  const t = i18n[currentLang];
   const name = document.getElementById('user-name').value.trim();
-  if (!name) return setStatus('Te rugăm să introduci numele tău.', 'error');
-  if (!selectedFiles.length) return setStatus('Selectează cel puțin o fotografie.', 'error');
+  if (!name) return setStatus(t.errName, 'error');
+  if (!selectedFiles.length) return setStatus(t.errPhoto, 'error');
 
   const btn = document.getElementById('upload-btn');
   btn.disabled = true;
@@ -679,9 +494,8 @@ async function startUpload() {
   pb.style.display = 'block'; pf.style.width = '0%';
 
   let uploaded = 0;
-
   for (let i = 0; i < selectedFiles.length; i++) {
-    setStatus(`Se trimite ${i + 1} din ${selectedFiles.length}...`, '');
+    setStatus(`${t.sending} ${i + 1} ${t.of} ${selectedFiles.length}...`, '');
     try {
       const base64Data = await fileToBase64(selectedFiles[i]);
       const resp = await fetch(APPS_SCRIPT_URL, {
@@ -690,18 +504,18 @@ async function startUpload() {
       });
       const data = await resp.json();
       if (data.success) uploaded++;
-      else if (data.error && data.error.includes('limita')) { setStatus(data.error, 'error'); break; }
+      else if (data.error && data.error.includes('limita')) { setStatus(t.errLimit, 'error'); break; }
     } catch(e) {}
     pf.style.width = ((i + 1) / selectedFiles.length * 100) + '%';
   }
 
   btn.disabled = false;
   if (uploaded > 0) {
-    setStatus(`✓ ${uploaded} fotografie${uploaded > 1 ? 'i' : ''} încărcate! Mulțumim, ${name}! 🧳`, 'success');
+    setStatus(t.successMsg(uploaded, name), 'success');
     selectedFiles = []; renderPreviews();
     document.getElementById('user-name').value = '';
   } else {
-    setStatus('A apărut o eroare. Încearcă din nou.', 'error');
+    setStatus(t.errGeneral, 'error');
   }
 }
 
@@ -712,30 +526,31 @@ function setStatus(msg, type) {
 }
 
 async function loadGallery() {
+  const t = i18n[currentLang];
   const grid = document.getElementById('gallery-grid');
   const count = document.getElementById('gallery-count');
-  grid.innerHTML = '<div class="gallery-loading">↻ Se încarcă fotografiile...</div>';
+  grid.innerHTML = `<div class="gallery-loading">${t.loading}</div>`;
   count.textContent = '';
   try {
     const resp = await fetch(APPS_SCRIPT_URL + '?action=list');
     const data = await resp.json();
     if (!data.success || !data.photos.length) {
-      grid.innerHTML = '<div class="gallery-empty">Nu există fotografii încă. Fii primul care încarcă! 📷</div>';
-      count.textContent = '0 fotografii';
+      grid.innerHTML = `<div class="gallery-empty">${t.empty}</div>`;
+      count.textContent = t.photos(0);
       return;
     }
-    count.textContent = data.photos.length + ' fotografi' + (data.photos.length === 1 ? 'e' : 'i');
+    count.textContent = t.photos(data.photos.length);
     grid.innerHTML = '';
     const storedName = document.getElementById('user-name')?.value?.trim() || '';
     data.photos.forEach(photo => {
       const date = new Date(photo.timestamp);
-      const timeStr = date.toLocaleTimeString('ro-RO', { hour: '2-digit', minute: '2-digit' });
+      const timeStr = date.toLocaleTimeString(currentLang === 'en' ? 'en-GB' : currentLang === 'it' ? 'it-IT' : 'ro-RO', { hour: '2-digit', minute: '2-digit' });
       const isOwner = storedName && storedName.toLowerCase() === photo.userName.toLowerCase();
       const item = document.createElement('div');
       item.className = 'gallery-item';
       item.innerHTML = `
         <div class="gallery-img-wrap" onclick="openLightbox('${photo.url}','${esc(photo.userName)}')">
-          <img src="${photo.url}" alt="Foto de ${esc(photo.userName)}" loading="lazy">
+          <img src="${photo.url}" alt="${esc(photo.userName)}" loading="lazy">
         </div>
         <div class="gallery-item-info">
           <div>
@@ -747,14 +562,15 @@ async function loadGallery() {
       grid.appendChild(item);
     });
   } catch(e) {
-    grid.innerHTML = '<div class="gallery-empty">Eroare la încărcare. Verifică conexiunea.</div>';
+    grid.innerHTML = `<div class="gallery-empty">${t.errLoad}</div>`;
   }
 }
 
 async function deletePhoto(fileId, userName, btn) {
-  if (!confirm('Ești sigur că vrei să ștergi această fotografie?')) return;
+  const t = i18n[currentLang];
+  if (!confirm(t.confirmDelete)) return;
   const storedName = document.getElementById('user-name')?.value?.trim() || '';
-  if (!storedName) return alert('Introdu mai întâi numele tău în secțiunea de upload.');
+  if (!storedName) return alert(t.errNoName);
   btn.disabled = true; btn.textContent = '...';
   try {
     const resp = await fetch(APPS_SCRIPT_URL, {
@@ -763,8 +579,8 @@ async function deletePhoto(fileId, userName, btn) {
     });
     const data = await resp.json();
     if (data.success) loadGallery();
-    else { alert(data.error || 'Eroare.'); btn.disabled = false; btn.textContent = '🗑'; }
-  } catch(e) { alert('Eroare.'); btn.disabled = false; btn.textContent = '🗑'; }
+    else { alert(data.error || t.errDelete); btn.disabled = false; btn.textContent = '🗑'; }
+  } catch(e) { alert(t.errDelete); btn.disabled = false; btn.textContent = '🗑'; }
 }
 
 function openLightbox(url, name) {
